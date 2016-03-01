@@ -1,0 +1,30 @@
+{
+  "name": "crowdsource",
+  "version": "1.0.0",
+  "description": "A smooth way to crowdsource decisions",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasonpilz/crowdsource.git"
+  },
+  "keywords": [
+    "poll",
+    "crowdsource",
+    "vote"
+  ],
+  "author": "Jason Pilz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jasonpilz/crowdsource/issues"
+  },
+  "homepage": "https://github.com/jasonpilz/crowdsource#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  },
+  "devDependencies": {
+    "mocha": "^2.4.5"
+  }
+}
