@@ -2,5 +2,5 @@
 # crowdsource (AKA Realtime)
 Turing M4 Project using socket.io and express.js
 
-* Start server with `node index.js`
+* Start server with `node index.js`, or `nodemon index.js`
 * Run tests with `npm test`

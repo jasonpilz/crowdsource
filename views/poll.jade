@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  h1= poll.title
+  ul
+    each val in poll.choices
+      li= val

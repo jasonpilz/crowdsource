@@ -1,7 +1,23 @@
-doctype html
-html(lang="en")
-  head
-    title= title
-    link(href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css', rel='stylesheet')
-  body
+extends layout
+
+block content
+  .container
+    h1.text-center Crowdsource
+    .container.max600
+      .row
+        .span10
+          h3.text-center Create New Poll
+          form(action='/polls', method='POST').form-horizontal.well
+            h5 Title
+            input(type='text' name='poll[title]').form-control
+            hr
+            h5 Options
+            .container.max600#options
+              input(type='text' name='poll[responses][]').form-control
+              br
+              input(type='text' name='poll[responses][]').form-control
+              br
+            .btn-group
+              input#create-poll(type='submit', name='poll-submit' value='Create').btn.btn-success
+              input#add-option(type='button', name='add-option' value='Add Option').btn.btn-info
 
