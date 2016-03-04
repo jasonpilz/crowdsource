@@ -1,7 +1,13 @@
 extends layout
 
 block content
-  h1= poll.title
-  ul
-    each val in poll.choices
-      li= val
+  .container.text-center
+    h1= poll.title
+    br
+    h3 Make your Selection
+    br
+    .jumbotron.align-center.text-left
+      each val in poll.choices
+        p= val
+        input(type='button', name="#{val}-button" value='Select').btn
+

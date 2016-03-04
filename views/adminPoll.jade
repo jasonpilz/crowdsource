@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  .container.text-center
+    h1= poll.title
+    br
+    .jumbotron.align-center.text-left
+      p <strong>Admin URL: </strong>
+        a(href=poll.adminUrl) #{poll.adminUrl}
+      p <strong>Vote URL: </strong>
+        a(href=poll.voteUrl) #{poll.voteUrl}
