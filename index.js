@@ -27,13 +27,26 @@ app.get('/', (request, response) => {
 });
 
 app.post('/polls', (request, response) => {
-  let id = generateId();
-  let adminId = generateId();
+  let id = generateId(10);
+  let adminId = generateId(4);
+  let voteUrl = `${request.protocol}://${request.get('host')}/polls/${id}`
+  let adminUrl = `${request.protocol}://${request.get('host')}/polls/${adminId}/${id}`
 
-  app.locals.polls[id] = new Poll(id, adminId, request.body.poll);
+  let poll = new Poll(id, adminId, request.body.poll, voteUrl, adminUrl);
 
-  response.redirect('/polls/' + id);
+  app.locals.polls[id] = poll;
+
+  response.redirect(adminUrl);
 });
+
+app.get('/polls/:adminId/:id', (request, response) => {
+  let poll = app.locals.polls[request.params.id]
+
+  if (poll.adminId != request.params.adminId) {
+    return response.sendStatus(400);
+  }
+  response.render('adminPoll', { poll: poll });
+})
 
 app.get('/polls/:id', (request, response) => {
   let poll = app.locals.polls[request.params.id]
@@ -41,8 +54,6 @@ app.get('/polls/:id', (request, response) => {
   response.render('poll', { poll: poll });
 })
 
-
-// app.get('/polls/admin/:id')
 // get() set() update()
 
 module.exports = app;
