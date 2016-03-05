@@ -33,9 +33,13 @@ io.on('connection', (socket) => {
   socket.on('message', (channel, message) => {
     let poll = app.locals.polls[message.id];
     switch (channel) {
+      case 'userConnected':
+        io.emit('updateVotes', poll.countVotes());
+        if (!poll.isActive) { io.emit('disablePoll'); }
+        break;
       case 'voteCast':
         poll.votes.push(message.choice);
-        io.emit('voteCount', poll.countVotes());
+        io.emit('updateVotes', poll.countVotes());
         break;
       case 'endPoll':
         poll.isActive = false;
