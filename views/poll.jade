@@ -6,8 +6,11 @@ block content
     br
     h3 Make your Selection
     br
-    .jumbotron.align-center.text-left
+    .jumbotron.align-center.text-left#choices
       each val in poll.choices
-        p= val
-        input(type='button', name="#{val}-button" value='Select').btn
+        input(type='button', name="#{val}-button" value="#{val}").btn
+        br
+        br
+  .container.text-center#users-connected
+
 

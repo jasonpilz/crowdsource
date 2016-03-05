@@ -9,7 +9,7 @@ block content
           h3.text-center Create New Poll
           form(action='/polls', method='POST').form-horizontal.well
             h5 Title
-            input(type='text' name='poll[title]').form-control
+            input(type='text' name='poll[title]', placeholder='What is your question?').form-control
             hr
             h5 Options
             .container.max600#options
