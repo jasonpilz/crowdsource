@@ -10,6 +10,7 @@ let $usersConnected = $('#users-connected');
 let $votes          = $('#votes');
 let pollId          = window.location.pathname.split('/')[2];
 
+// Event Listeners
 $addOption.click((event) => {
   $options.append(
     `<input type="text" name="poll[responses][]" class="form-control">
@@ -30,21 +31,26 @@ for (let i = 0; i < $buttons.length; i++) {
   });
 };
 
+// Socket.io
+$(function() { socket.send('userConnected', { id: pollId }) });
+
 socket.on('usersConnected', (count) => {
   $usersConnected.text(`Connected Users: ${count}`);
 });
 
-socket.on('voteCount', (votes) => {
+socket.on('updateVotes', (votes) => {
   $votes.empty();
-  console.log(votes)
   Object.keys(votes).forEach((key) => {
     let value = votes[key];
-    $votes.append(`<h4>${key}: ${value}</h4><br>`);
+    $votes.append(`<h4>${key}: ${value}   </h4>`);
   })
 });
 
 socket.on('disablePoll', () => {
   console.log("Diable the poll son");
-})
+  for (let i = 0; i < $buttons.length; i++) {
+    $buttons[i].className += ' disabled';
+  }
+});
 
 

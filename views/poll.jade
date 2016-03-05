@@ -4,14 +4,15 @@ block content
   .container.text-center
     h1= poll.title
     br
-    h3 Make your Selection
+    .jumbotron.text-left#choices
+      h3 Choices:
+      .well
+        each val in poll.choices
+          input(type='button', name="#{val}-button" value="#{val}").btn.btn-block
+          br
+      h3 Results:
+      .well
+        .container.text-center#votes
     br
-    .jumbotron.align-center.text-left#choices
-      each val in poll.choices
-        input(type='button', name="#{val}-button" value="#{val}").btn
-        br
-        br
-      .container#votes
   .container.text-center#users-connected
-
 
