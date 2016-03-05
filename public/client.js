@@ -7,6 +7,7 @@ let $options        = $('#options');
 let $addOption      = $('#add-option');
 let $buttons        = $('#choices :button');
 let $usersConnected = $('#users-connected');
+let $votes          = $('#votes');
 let pollId          = window.location.pathname.split('/')[2];
 
 $addOption.click((event) => {
@@ -34,7 +35,12 @@ socket.on('usersConnected', (count) => {
 });
 
 socket.on('voteCount', (votes) => {
+  $votes.empty();
   console.log(votes)
+  Object.keys(votes).forEach((key) => {
+    let value = votes[key];
+    $votes.append(`<h4>${key}: ${value}</h4><br>`);
+  })
 });
 
 socket.on('disablePoll', () => {
