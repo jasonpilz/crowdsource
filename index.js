@@ -35,6 +35,7 @@ io.on('connection', (socket) => {
     switch (channel) {
       case 'userConnected':
         io.emit('updateVotes', poll.countVotes());
+        if (!poll.isActive) { io.emit('disablePoll'); }
         break;
       case 'voteCast':
         poll.votes.push(message.choice);
