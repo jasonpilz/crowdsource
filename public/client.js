@@ -18,7 +18,7 @@ $addOption.click((event) => {
   $options.append(
     `<input type="text" name="poll[responses][]" class="form-control"><br>`
   );
-})
+});
 
 $closePoll.click(() => {
   $closePoll.removeClass('btn-danger').addClass('btn-secondary').val('Closed');
@@ -34,10 +34,10 @@ for (let i = 0; i < $buttons.length; i++) {
     socket.send('voteCast', { choice: this.value, id: pollId });
     iVoted = true;
   });
-};
+}
 
 // Socket.io
-$(function() { socket.send('userConnected', { id: pollId }) });
+$(function() { socket.send('userConnected', { id: pollId }); });
 
 socket.on('usersConnected', (count) => {
   $usersConnected.text(`Connected Users: ${count}`);
@@ -47,7 +47,7 @@ socket.on('updateVotes', (votes) => {
   $votes.empty();
   Object.keys(votes).forEach((key) => {
     $votes.append(`<h4>${key}: ${votes[key]}</h4>`);
-  })
+  });
 });
 
 socket.on('disablePoll', () => {
@@ -60,4 +60,3 @@ socket.on('disablePoll', () => {
                   Poll has been closed.
                   </div>`);
 });
-
