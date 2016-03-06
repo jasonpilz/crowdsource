@@ -16,7 +16,7 @@ const io         = socketIo(server);
 const myNum      = process.env.MY_NUMBER
 // const twilioNum  = process.env.TWILIO_NUMBER
 // const twilio     = require('twilio')(process.env.TWILIO_ACCOUNT_SID,
-                                     process.env.TWILIO_AUTH_TOKEN);
+                                     // process.env.TWILIO_AUTH_TOKEN);
 
 app.set('port', port);
 app.set('view engine', 'jade');
