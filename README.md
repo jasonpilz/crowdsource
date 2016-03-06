@@ -1,7 +1,7 @@
 [![Stories in Ready](https://badge.waffle.io/jasonpilz/crowdsource.png?label=ready&title=Ready)](https://waffle.io/jasonpilz/crowdsource)
 # crowdsource (AKA Realtime)
 
-#### Turing M4 Project using socket.io and express.js
+### Turing M4 Project using socket.io and express.js
 
 * Clone repo
 * For twilio: Add these vars to your environment: `TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_NUMBER`
@@ -9,7 +9,7 @@
 * Make sure to `npm install` the dependencies
 * Run tests with `npm test`
 
-#### Checkout the [deployed application](https://turingcrowdsource.herokuapp.com/)
+>#### Checkout the [deployed application](https://turingcrowdsource.herokuapp.com/)
 
 ### Usage
 
