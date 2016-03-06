@@ -11,8 +11,11 @@ block content
             h5 Title
             input(type='text' name='poll[title]', placeholder='What is your question?').form-control
             hr
+            h5 Expiry
+            input(type='text' name='poll[openTime]', placeholder='Enter time in minutes for poll to stay open').form-control
+            hr
             h5 Options
-            .container.max600#options
+            #options
               input(type='text' name='poll[responses][]').form-control
               br
               input(type='text' name='poll[responses][]').form-control
