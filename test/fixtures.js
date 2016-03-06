@@ -1,4 +1,7 @@
 exports.validPoll = {
   title: 'Whats for lunch',
-  choices: ['chipotle', 'sliceworks', 'noodles', 'the vault' ]
+  openTime: '',
+  userNumber: '',
+  choices: ['this', 'that'],
+  responses: [ 'hey', 'you' ]
 };
