@@ -21,4 +21,4 @@ of the poll when the poll closes, enter your phone number in the format `1303555
 * `Options` Enter any number of answers you want your voters to select. Minimum
 is 2 options, additional options can be added by clicking on (you guessed it) `Add Option`
 
-#### Click submit to receive the links to your poll!
+>#### Click `Submit` to receive the links to your poll!
