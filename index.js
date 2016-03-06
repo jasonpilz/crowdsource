@@ -14,8 +14,8 @@ const server     = http.createServer(app)
 const socketIo   = require('socket.io');
 const io         = socketIo(server);
 const myNum      = process.env.MY_NUMBER
-const twilioNum  = process.env.TWILIO_NUMBER
-const twilio     = require('twilio')(process.env.TWILIO_ACCOUNT_SID,
+// const twilioNum  = process.env.TWILIO_NUMBER
+// const twilio     = require('twilio')(process.env.TWILIO_ACCOUNT_SID,
                                      process.env.TWILIO_AUTH_TOKEN);
 
 app.set('port', port);
@@ -106,21 +106,21 @@ function setPollExpiry(poll) {
 function closePoll(poll) {
   poll.isActive = false;
   io.emit('disablePoll');
-  twilioTheVictor(poll);
+  // twilioTheVictor(poll);
 }
 
-function twilioTheVictor(poll) {
-  twilio.sendMessage({
-    to: `+${myNum}`,
-    from: `+${twilioNum}`,
-    body: `Poll results for: ${poll.title}`
-  }, function (error, responseData) {
-    if (!error) {
-      console.log(responseData.from);
-      console.log(responseData.body);
-    }
-  });
-}
+// function twilioTheVictor(poll) {
+//   twilio.sendMessage({
+//     to: `+${myNum}`,
+//     from: `+${twilioNum}`,
+//     body: `Poll results for: ${poll.title}`
+//   }, function (error, responseData) {
+//     if (!error) {
+//       console.log(responseData.from);
+//       console.log(responseData.body);
+//     }
+//   });
+// }
 
 module.exports.app = app;
 module.exports.io  = io;
