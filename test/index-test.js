@@ -2,7 +2,7 @@
 
 const assert  = require('assert');
 const request = require('request');
-const app     = require('../index');
+const app     = require('../index').app;
 
 describe('Index', () => {
 

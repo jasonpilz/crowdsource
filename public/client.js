@@ -11,7 +11,7 @@ let $buttons        = $('#choices :button');
 let $usersConnected = $('#users-connected');
 let $votes          = $('#votes');
 let pollId          = window.location.pathname.split('/')[2];
-let iVoted          = 0;
+let iVoted          = false;
 
 // Event Listeners
 $addOption.click((event) => {
@@ -27,12 +27,12 @@ $closePoll.click(() => {
 
 for (let i = 0; i < $buttons.length; i++) {
   $buttons[i].addEventListener('click', function () {
-    if (iVoted > 0) {
+    if (iVoted) {
       $error.removeClass('hidden').text('You have already Voted');
       return;
     }
     socket.send('voteCast', { choice: this.value, id: pollId });
-    iVoted++;
+    iVoted = true;
   });
 };
 
@@ -46,8 +46,7 @@ socket.on('usersConnected', (count) => {
 socket.on('updateVotes', (votes) => {
   $votes.empty();
   Object.keys(votes).forEach((key) => {
-    let value = votes[key];
-    $votes.append(`<h4>${key}: ${value}</h4>`);
+    $votes.append(`<h4>${key}: ${votes[key]}</h4>`);
   })
 });
 

@@ -1,4 +1,4 @@
 exports.validPoll = {
   title: 'Whats for lunch',
-  choices = ['chipotle', 'sliceworks', 'noodles', 'the vault' ];
+  choices: ['chipotle', 'sliceworks', 'noodles', 'the vault' ]
 };

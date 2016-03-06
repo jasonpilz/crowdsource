@@ -35,7 +35,7 @@ io.on('connection', (socket) => {
     switch (channel) {
       case 'userConnected':
         io.emit('updateVotes', poll.countVotes());
-        if (!poll.isActive) { io.emit('disablePoll'); }
+        if (!poll.isActive) { socket.emit('disablePoll'); }
         break;
       case 'voteCast':
         poll.votes.push(message.choice);
@@ -68,6 +68,7 @@ app.post('/polls', (request, response) => {
   let adminUrl = `${request.protocol}://${request.get('host')}/polls/${id}/${adminId}`
   let poll     = new Poll(id, adminId, request.body.poll, voteUrl, adminUrl);
 
+  setPollExpiry(poll);
   app.locals.polls[id] = poll;
 
   response.redirect(adminUrl);
@@ -88,7 +89,35 @@ app.get('/polls/:id/:adminId', (request, response) => {
     return response.sendStatus(400);
   }
   response.render('adminPoll', { poll: poll });
-})
+});
 
-module.exports = app;
+// function setPollExpiry(poll) {
+//   console.log(poll.expiry)
+//   // if (poll.expiry && typeof(poll.expiry) === 'number') {
+//   if (poll.expiry) {
+//     console.log("setting a timer!")
+//     setTimeout(closePoll(poll), poll.expiry * 60000);
+//   }
+// }
 
+function setPollExpiry(poll) {
+  console.log(poll.expiry)
+  if (poll.expiry) {
+    setTimeout(function () {
+      closePoll(poll);
+    }, poll.expiry * 60000);
+  }
+}
+
+function closePoll(poll) {
+  poll.isActive = false;
+  io.emit('disablePoll');
+}
+
+module.exports.app = app;
+module.exports.io  = io;
+
+// module.exports = {
+//   app: app,
+//   io: io
+// }
