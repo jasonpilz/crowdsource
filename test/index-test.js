@@ -67,7 +67,6 @@ describe('Index', () => {
         if (error) { done(error); }
       });
 
-      // Why no workie?
       app.locals.polls.testPoll = fixtures.validPoll;
 
       let pollCount = Object.keys(app.locals.polls).length;
