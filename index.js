@@ -54,7 +54,7 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log(`Users connected: ${io.engine.clientsCount}`);
     io.emit('usersConnected', io.engine.clientsCount);
-  })
+  });
 });
 
 //================================= Routes ================================
@@ -78,10 +78,10 @@ app.get('/polls/:id', (request, response) => {
   if (!poll) { return response.sendStatus(400); }
 
   response.render('poll', { poll: poll });
-})
+});
 
 app.get('/polls/:id/:adminId', (request, response) => {
-  let poll = app.locals.polls[request.params.id]
+  let poll = app.locals.polls[request.params.id];
   if (!poll) { return response.sendStatus(400); }
 
   if (poll.adminId != request.params.adminId) {
@@ -106,4 +106,3 @@ function setPollExpiry(poll) {
 
 module.exports.app = app;
 module.exports.io  = io;
-

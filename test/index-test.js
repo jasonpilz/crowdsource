@@ -53,7 +53,7 @@ describe('Index', () => {
     it('should receive and store poll objects', (done) => {
       assert(true);
       done();
-    })
+    });
 
     it('should not return a 404', (done) => {
       this.request.post('/polls', (error, response) => {
@@ -62,6 +62,6 @@ describe('Index', () => {
         done();
       });
     });
-  })
+  });
 
 });
