@@ -67,7 +67,7 @@ app.post('/polls', (request, response) => {
   let adminUrl = helper.setAdminUrl(request, id, adminId);
   let poll     = new Poll(id, adminId, request.body.poll, voteUrl, adminUrl);
 
-  helper.setPollExpiry(poll);
+  setPollExpiry(poll);
   app.locals.polls[id] = poll;
 
   response.redirect(adminUrl);
@@ -94,6 +94,14 @@ function closePoll(poll) {
   poll.isActive = false;
   io.emit('disablePoll');
   poll.twilio.sendMessage(poll);
+}
+
+function setPollExpiry(poll) {
+  if (poll.expiry) {
+    setTimeout(function () {
+      closePoll(poll);
+    }, poll.expiry * 60000);
+  }
 }
 
 module.exports.app = app;
