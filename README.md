@@ -13,12 +13,12 @@
 
 ### Usage
 
-* `Title` Enter a title for your poll in the form of the question you want to ask.
-* `Expiry` Optionally enter an integer representing the amount of minutes you want the
+* `Title` - Enter a title for your poll in the form of the question you want to ask.
+* `Expiry` - Optionally enter an integer representing the amount of minutes you want the
 poll to stay active, after which it will close automatically.
-* `Messaging` If you would like a SMS message sent to you indicating the result
+* `Messaging` - If you would like a SMS message sent to you indicating the result
 of the poll when the poll closes, enter your phone number in the format `13035556666`
-* `Options` Enter any number of answers you want your voters to select. Minimum
+* `Options` - Enter any number of answers you want your voters to select. Minimum
 is 2 options, additional options can be added by clicking on (you guessed it) `Add Option`
 
 >#### Click `Submit` to receive the links to your poll!
