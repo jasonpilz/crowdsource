@@ -1,10 +1,12 @@
 'use strict';
 
-const assert   = require('assert');
-const request  = require('request');
-const app      = require('../index').app;
-const fixtures = require('./fixtures');
-const Poll     = require('../lib/poll');
+const assert    = require('assert');
+const expect    = require('chai').expect;
+const request   = require('request');
+const supertest = require('supertest');
+const app       = require('../index').app;
+const fixtures  = require('./fixtures');
+const Poll      = require('../lib/poll');
 
 describe('Index', () => {
 
