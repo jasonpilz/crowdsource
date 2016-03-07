@@ -38,12 +38,16 @@ io.on('connection', (socket) => {
     let poll = app.locals.polls[message.id];
     switch (channel) {
       case 'userConnected':
-        if (poll) { io.emit('updateVotes', poll.countVotes()); }
+        if (poll && poll.realTime === 'yes') { io.emit('updateVotes', poll.countVotes()); }
         if (poll && !poll.isActive) { socket.emit('disablePoll'); }
         break;
       case 'voteCast':
         poll.votes.push(message.choice);
-        io.emit('updateVotes', poll.countVotes());
+        if (poll.realTime === 'yes') {
+          io.emit('updateVotes', poll.countVotes());
+        } else {
+          socket.emit('updateVotes', poll.countVotes());
+        }
         break;
       case 'endPoll':
         closePoll(poll, io);
