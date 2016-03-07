@@ -31,7 +31,6 @@ app.use('/', routes);
 //============================== Socket.io ================================
 
 io.on('connection', (socket) => {
-  console.log(`Users connected: ${io.engine.clientsCount}`);
   io.emit('usersConnected', io.engine.clientsCount);
 
   socket.on('message', (channel, message) => {
@@ -56,7 +55,6 @@ io.on('connection', (socket) => {
   });
 
   socket.on('disconnect', () => {
-    console.log(`Users connected: ${io.engine.clientsCount}`);
     io.emit('usersConnected', io.engine.clientsCount);
   });
 });
