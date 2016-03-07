@@ -8,7 +8,7 @@ describe('The legendary helpers', () => {
   const request = {
     protocol: 'http',
     get: (host) => { return 'localhost'; }
-  }
+  };
 
   it('exists', () => {
     assert(helper);

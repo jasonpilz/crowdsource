@@ -3,6 +3,12 @@
   "esnext": true,
   "globals": {
     "$": false,
-    "alert": false
+    "alert": false,
+    "it": false,
+    "before": false,
+    "after": false,
+    "context": false,
+    "beforeEach": false,
+    "describe": false
   }
 }

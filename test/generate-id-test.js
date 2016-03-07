@@ -10,7 +10,7 @@ describe('Generating a encrypted ID', () => {
 
     assert(randomString);
     assert.equal('string', typeof(randomString));
-  })
+  });
 
   it('returns a arbitrary length random string', () => {
     let randomStringOfTenChars   = crypto(5);
@@ -18,5 +18,5 @@ describe('Generating a encrypted ID', () => {
 
     assert.equal(10, randomStringOfTenChars.length);
     assert.equal(4, randomStringOfFourChars.length);
-  })
-})
+  });
+});

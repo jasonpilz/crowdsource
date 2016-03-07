@@ -28,13 +28,13 @@ describe('Poll Server', () => {
       data.should.equal(1);
       client1.disconnect();
       data.should.equal(0);
-    })
+    });
     done();
-  })
+  });
 
   it('should be able to broadcast messages', (done) => {
     let client1, client2, client3;
-    let message  = { choice: 'hey', id: '12345134512asdf' }
+    let message  = { choice: 'hey', id: '12345134512asdf' };
     let messages = 0;
 
     let checkMessage = (client) => {
@@ -46,7 +46,7 @@ describe('Poll Server', () => {
           done();
         }
       });
-    }
+    };
 
     client1 = io.connect(socketUrl, options);
     checkMessage(client1);
