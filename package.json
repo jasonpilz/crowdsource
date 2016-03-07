@@ -33,7 +33,11 @@
     "twilio": "^2.9.0"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "mocha": "^2.4.5",
-    "request": "^2.69.0"
+    "request": "^2.69.0",
+    "should": "^8.2.2",
+    "socket.io-client": "^1.4.5",
+    "supertest": "^1.2.0"
   }
 }

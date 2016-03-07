@@ -1,10 +1,12 @@
 'use strict';
 
-const assert   = require('assert');
-const request  = require('request');
-const app      = require('../index').app;
-const fixtures = require('./fixtures');
-const Poll     = require('../lib/poll');
+const assert    = require('assert');
+const expect    = require('chai').expect;
+const request   = require('request');
+const supertest = require('supertest');
+const app       = require('../index').app;
+const fixtures  = require('./fixtures');
+const Poll      = require('../lib/poll');
 
 describe('Index', () => {
 
@@ -61,7 +63,7 @@ describe('Index', () => {
           userNumber: '',
           responses: [ 'hey', 'you'  ]
         }
-      }
+      };
 
       this.request.post('/polls', { form: payload }, (error, response) => {
         if (error) { done(error); }
@@ -87,15 +89,15 @@ describe('Index', () => {
   describe('GET /polls/:id', () => {
     beforeEach(() => {
       app.locals.polls.testPoll = fixtures.validPoll;
-    })
+    });
 
     it('should not return a 404', (done) => {
       this.request.get('/polls/testPoll', (error, response) => {
         if (error) { done(error); }
         assert.notEqual(response.statusCode, 404);
         done();
-      })
-    })
+      });
+    });
 
     it('should return a page with the title of the poll', (done) => {
       let poll = app.locals.polls.testPoll;
